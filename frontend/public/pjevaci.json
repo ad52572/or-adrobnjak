@@ -1,5 +1,4 @@
-[
-  {
+[{
     "ime": "Harry",
     "prezime": "Styles",
     "spol": "M",
@@ -8,16 +7,16 @@
     "visina": "Holmes Chapel",
     "zanr": "Pop",
     "opis": "Harry Edward Styles engleski je pjevač, tekstopisac i glumac. Svoju glazbenu karijeru započeo je 2010. godine kao solo natjecatelj u britanskoj glazbenoj natjecateljskoj seriji The X Factor.",
-    "pjesma": [
-      { "naslov": "Golden", "godina izdanja": "2020", "trajanje": "00:03:30" },
-      {
+    "pjesma": [{
+        "naslov": "Golden",
+        "godina izdanja": "2020",
+        "trajanje": "00:03:30"
+    }, {
         "naslov": "Treat People With Kindness",
         "godina izdanja": "2021",
         "trajanje": "00:03:22"
-      }
-    ]
-  },
-  {
+    }]
+}, {
     "ime": "Shawn",
     "prezime": "Mandes",
     "spol": "M",
@@ -26,16 +25,16 @@
     "visina": "Los Angeles",
     "zanr": "Pop",
     "opis": "Shawn Peter Raul Mendes je kanadski pjevač i tekstopisac. Slijedi 2013. godine, objavljujući naslovnice pjesama u aplikaciji za razmjenu video zapisa Vine.",
-    "pjesma": [
-      { "naslov": "Wonder", "godina izdanja": "2020", "trajanje": "00:03:15" },
-      {
+    "pjesma": [{
+        "naslov": "Wonder",
+        "godina izdanja": "2020",
+        "trajanje": "00:03:15"
+    }, {
         "naslov": "Summer Of Love",
         "godina izdanja": "2021",
         "trajanje": "00:03:01"
-      }
-    ]
-  },
-  {
+    }]
+}, {
     "ime": "Whitney",
     "prezime": "Houston",
     "spol": "Ž",
@@ -44,20 +43,16 @@
     "visina": "-",
     "zanr": "Pop",
     "opis": "Whitney Elizabeth Houston bila je američka pjevačica i glumica. U srodstvu s nekoliko poznatih pjevačica, poput njene majke Cissy Houston, rođakinje Dionne Warwick i kume Arethe Franklin, Houston je počela pjevati s jedanaest godina u dječjem gospel zboru.",
-    "pjesma": [
-      {
+    "pjesma": [{
         "naslov": "I Will Always Love You",
         "godina izdanja": "2010",
         "trajanje": "00:04:34"
-      },
-      {
+    }, {
         "naslov": "I Have Nothing",
         "godina izdanja": "2009",
         "trajanje": "00:04:51"
-      }
-    ]
-  },
-  {
+    }]
+}, {
     "ime": "Taylor",
     "prezime": "Swift",
     "spol": "Ž",
@@ -66,16 +61,16 @@
     "visina": "Wyomissing",
     "zanr": "Pop",
     "opis": "Taylor Alison Swift američka je kantautorica. Njezino pripovjedačko pisanje pjesama, koje inspiraciju često uzima iz osobnog života, dobilo je široku kritičku pohvalu i medijsku pokrivenost. Rođena u Pennsylvaniji, Swift se preselila u Nashville, Tennessee 2004. godine kako bi nastavila karijeru u country glazbi.",
-    "pjesma": [
-      { "naslov": "willow", "godina izdanja": "2020", "trajanje": "00:04:13" },
-      {
+    "pjesma": [{
+        "naslov": "willow",
+        "godina izdanja": "2020",
+        "trajanje": "00:04:13"
+    }, {
         "naslov": "Love Story",
         "godina izdanja": "2009",
         "trajanje": "00:03:57"
-      }
-    ]
-  },
-  {
+    }]
+}, {
     "ime": "Billie",
     "prezime": "Eilish",
     "spol": "Ž",
@@ -84,20 +79,16 @@
     "visina": "Highland Park",
     "zanr": "Pop",
     "opis": "Billie Eilish Pirate Baird OConnell američka pjevačica i kantautorica. Pažnju medija prvi je put privukla 2016. godine kad je na internetsku stranicu SoundCloud prenijela pjesmu Ocean Eyes, koju je naknadno objavio Darkroom, podružnica Interscope Recordsa.",
-    "pjesma": [
-      {
+    "pjesma": [{
         "naslov": "Ocena Eyes",
         "godina izdanja": "2016",
         "trajanje": "00:03:20"
-      },
-      {
+    }, {
         "naslov": "Happier than ever",
         "godina izdanja": "2021",
         "trajanje": "00:03:20"
-      }
-    ]
-  },
-  {
+    }]
+}, {
     "ime": "Ariana",
     "prezime": "Grande",
     "spol": "Ž",
@@ -106,16 +97,16 @@
     "visina": "Los Angeles",
     "zanr": "Pop",
     "opis": "Ariana Grande-Butera je američka pop i R&B pjevačica, tekstopiskinja te glumica. Svjetsku slavu je stekla putem mjuzikla Broadway, te preuzimanjem uloge Cat Valentine u televizijskim serijama Victorious i Sam & Cat.",
-    "pjesma": [
-      {
+    "pjesma": [{
         "naslov": "positions",
         "godina izdanja": "2020",
         "trajanje": "00:02:58"
-      },
-      { "naslov": "7 rings", "godina izdanja": "2019", "trajanje": "00:03:05" }
-    ]
-  },
-  {
+    }, {
+        "naslov": "7 rings",
+        "godina izdanja": "2019",
+        "trajanje": "00:03:05"
+    }]
+}, {
     "ime": "Finneas",
     "prezime": "Baird OConnell",
     "spol": "M",
@@ -124,16 +115,16 @@
     "visina": "Los Angeles",
     "zanr": "Pop",
     "opis": "Finneas Baird OConnell, mononimno poznat po svom imenu, američki je kantautor, producent, audio inženjer i glumac. Napisao je i producirao glazbu za razne umjetnike, uključujući svoju sestru Billie Eilish.",
-    "pjesma": [
-      {
+    "pjesma": [{
         "naslov": "Love is pain",
         "godina izdanja": "2021",
         "trajanje": "00:03:45"
-      },
-      { "naslov": "The 90s", "godina izdanja": "2021", "trajanje": "00:03:23" }
-    ]
-  },
-  {
+    }, {
+        "naslov": "The 90s",
+        "godina izdanja": "2021",
+        "trajanje": "00:03:23"
+    }]
+}, {
     "ime": "Sia",
     "prezime": "Furler",
     "spol": "Ž",
@@ -142,16 +133,16 @@
     "visina": "Los Angeles",
     "zanr": "Pop",
     "opis": "Sia Kate Isobelle Furler australska je pjevačica, tekstopisac, glasovna glumica i redateljica. Karijeru je započela kao pjevačica u acid jazz bendu Crisp sredinom 1990-ih u Adelaideu. 1997., kada se Crisp raspao, u Australiji je izdala svoj debitantski studijski album, pod nazivom OnlySee.",
-    "pjesma": [
-      {
+    "pjesma": [{
         "naslov": "Chandelier",
         "godina izdanja": "2014",
         "trajanje": "00:03:52"
-      },
-      { "naslov": "Snowman", "godina izdanja": "2020", "trajanje": "00:02:53" }
-    ]
-  },
-  {
+    }, {
+        "naslov": "Snowman",
+        "godina izdanja": "2020",
+        "trajanje": "00:02:53"
+    }]
+}, {
     "ime": "Miley",
     "prezime": "Cyrus",
     "spol": "Ž",
@@ -160,20 +151,16 @@
     "visina": "Los Angeles",
     "zanr": "Pop",
     "opis": "Miley Ray Cyrus je američka pjevačica, glumica i tekstopisac. Njezin otac je country pjevač Billy Ray Cyrus. U svom djetinjstvu držala je manje uloge u TV seriji Doc i filmu Big Fish.",
-    "pjesma": [
-      {
+    "pjesma": [{
         "naslov": "Angels Like You",
         "godina izdanja": "2021",
         "trajanje": "00:04:06"
-      },
-      {
+    }, {
         "naslov": "Wrecking Ball",
         "godina izdanja": "2013",
         "trajanje": "00:03:42"
-      }
-    ]
-  },
-  {
+    }]
+}, {
     "ime": "Lady",
     "prezime": "Gaga",
     "spol": "Ž",
@@ -182,20 +169,16 @@
     "visina": "Manhattan",
     "zanr": "Dance",
     "opis": "Stefani Joanne Angelina Germanotta, poznatija po umjetničkom imenu Lady Gaga, američka je kantautorica, producentica i glumica. Odrasla u New Yorku, Lady Gaga, starija od dvije sestre, pohađala je rimokatoličku školu Convent of a Sacred Heart, a kasnije započela studij na Tisch School of Arts Sveučilišta u New Yorku.",
-    "pjesma": [
-      {
+    "pjesma": [{
         "naslov": "Bad romance",
         "godina izdanja": "2009",
         "trajanje": "00:05:09"
-      },
-      {
+    }, {
         "naslov": "Born this way",
         "godina izdanja": "2011",
         "trajanje": "00:07:20"
-      }
-    ]
-  },
-  {
+    }]
+}, {
     "ime": "Kanye",
     "prezime": "West",
     "spol": "M",
@@ -204,13 +187,13 @@
     "visina": "Atlanta",
     "zanr": "Hip-hop",
     "opis": "Ye Omari West, bolje poznat samo kao Kanye West, američki je reper, pjevač, tekstopisac, glazbeni producent, redatelj videospotova, filmski redatelj i modni dizajner koji trenutno živi u Wyomingu. Trenutno ima potpisan ugovor s diskografskom kućom Def Jam Recordings, te ima svoju diskografsku kuću GOOD Music.",
-    "pjesma": [
-      {
+    "pjesma": [{
         "naslov": "Come to Life",
         "godina izdanja": "2021",
         "trajanje": "00:05:08"
-      },
-      { "naslov": "24", "godina izdanja": "2021", "trajanje": "00:04:53" }
-    ]
-  }
-]
+    }, {
+        "naslov": "24",
+        "godina izdanja": "2021",
+        "trajanje": "00:04:53"
+    }]
+}]

@@ -5,7 +5,7 @@
 -- Dumped from database version 13.2
 -- Dumped by pg_dump version 14.0
 
--- Started on 2021-10-31 17:45:07
+-- Started on 2021-11-12 19:12:01
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -55,7 +55,7 @@ CREATE SEQUENCE public.pjesma_id_pjesma_seq
 ALTER TABLE public.pjesma_id_pjesma_seq OWNER TO postgres;
 
 --
--- TOC entry 3011 (class 0 OID 0)
+-- TOC entry 3010 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: pjesma_id_pjesma_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -77,8 +77,8 @@ CREATE TABLE public.pjevac (
     mjesto_rodenja character varying,
     mjesto_stanovanja character varying,
     visina character varying,
-    zanr_id integer,
-    opis character varying
+    opis character varying,
+    zanr character varying
 );
 
 
@@ -101,7 +101,7 @@ CREATE SEQUENCE public.pjevac_id_pjevac_seq
 ALTER TABLE public.pjevac_id_pjevac_seq OWNER TO postgres;
 
 --
--- TOC entry 3012 (class 0 OID 0)
+-- TOC entry 3011 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: pjevac_id_pjevac_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -139,7 +139,7 @@ ALTER TABLE ONLY public.pjevac ALTER COLUMN id_pjevac SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 3004 (class 0 OID 33723)
+-- TOC entry 3003 (class 0 OID 33723)
 -- Dependencies: 203
 -- Data for Name: pjesma; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -169,26 +169,26 @@ INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesm
 
 
 --
--- TOC entry 3003 (class 0 OID 33681)
+-- TOC entry 3002 (class 0 OID 33681)
 -- Dependencies: 202
 -- Data for Name: pjevac; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, zanr_id, opis) VALUES (1, 'Billie', 'Eilish', 'Ž', '2021-12-18', 'Los Angeles', 'Highland Park', '1.61 m', 1, 'Billie Eilish Pirate Baird OConnell američka pjevačica i kantautorica. Pažnju medija prvi je put privukla 2016. godine kad je na internetsku stranicu SoundCloud prenijela pjesmu Ocean Eyes, koju je naknadno objavio Darkroom, podružnica Interscope Recordsa.');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, zanr_id, opis) VALUES (3, 'Lady', 'Gaga', 'Ž', '1997-07-30', 'New York', 'Manhattan', '1.55 m', 2, 'Stefani Joanne Angelina Germanotta, poznatija po umjetničkom imenu Lady Gaga, američka je kantautorica, producentica i glumica. Odrasla u New Yorku, Lady Gaga, starija od dvije sestre, pohađala je rimokatoličku školu Convent of a Sacred Heart, a kasnije započela studij na Tisch School of Arts Sveučilišta u New Yorku.');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, zanr_id, opis) VALUES (2, 'Finneas', 'Baird OConnell', 'M', '1997-07-30', 'Los Angeles', 'Los Angeles', '1.89 m', 1, 'Finneas Baird OConnell, mononimno poznat po svom imenu, američki je kantautor, producent, audio inženjer i glumac. Napisao je i producirao glazbu za razne umjetnike, uključujući svoju sestru Billie Eilish.');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, zanr_id, opis) VALUES (4, 'Harry', 'Styles', 'M', '1994-02-01', 'Redditch', 'Holmes Chapel', '1.83 m', 2, 'Harry Edward Styles engleski je pjevač, tekstopisac i glumac. Svoju glazbenu karijeru započeo je 2010. godine kao solo natjecatelj u britanskoj glazbenoj natjecateljskoj seriji The X Factor.');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, zanr_id, opis) VALUES (5, 'Taylor', 'Swift', 'Ž', '1989-12-13', 'Pennsylvania', 'Wyomissing', '1.8 m', 1, 'Taylor Alison Swift američka je kantautorica. Njezino pripovjedačko pisanje pjesama, koje inspiraciju često uzima iz osobnog života, dobilo je široku kritičku pohvalu i medijsku pokrivenost. Rođena u Pennsylvaniji, Swift se preselila u Nashville, Tennessee 2004. godine kako bi nastavila karijeru u country glazbi.');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, zanr_id, opis) VALUES (6, 'Ariana', 'Grande', 'Ž', '1993-06-16', 'Florida', 'Los Angeles', '1.6 m', 1, 'Ariana Grande-Butera je američka pop i R&B pjevačica, tekstopiskinja te glumica. Svjetsku slavu je stekla putem mjuzikla Broadway, te preuzimanjem uloge Cat Valentine u televizijskim serijama Victorious i Sam & Cat.');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, zanr_id, opis) VALUES (8, 'Shawn', 'Mandes', 'M', '1998-08-08', 'Pickering', 'Los Angeles', '1.84 m', 1, 'Shawn Peter Raul Mendes je kanadski pjevač i tekstopisac. Slijedi 2013. godine, objavljujući naslovnice pjesama u aplikaciji za razmjenu video zapisa Vine.');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, zanr_id, opis) VALUES (9, 'Kanye', 'West', 'M', '1977-06-08', 'Georgia', 'Atlanta', '1.73 m', 3, 'Ye Omari West, bolje poznat samo kao Kanye West, američki je reper, pjevač, tekstopisac, glazbeni producent, redatelj videospotova, filmski redatelj i modni dizajner koji trenutno živi u Wyomingu. Trenutno ima potpisan ugovor s diskografskom kućom Def Jam Recordings, te ima svoju diskografsku kuću GOOD Music.');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, zanr_id, opis) VALUES (10, 'Whitney', 'Houston', 'Ž', '1963-08-09', 'New Jersey', '-', '1.73 m', 1, 'Whitney Elizabeth Houston bila je američka pjevačica i glumica. U srodstvu s nekoliko poznatih pjevačica, poput njene majke Cissy Houston, rođakinje Dionne Warwick i kume Arethe Franklin, Houston je počela pjevati s jedanaest godina u dječjem gospel zboru.');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, zanr_id, opis) VALUES (11, 'Sia', 'Furler', 'Ž', '1972-12-18', 'Adelaide', 'Los Angeles', '1.64 m', 2, 'Sia Kate Isobelle Furler australska je pjevačica, tekstopisac, glasovna glumica i redateljica. Karijeru je započela kao pjevačica u acid jazz bendu Crisp sredinom 1990-ih u Adelaideu. 1997., kada se Crisp raspao, u Australiji je izdala svoj debitantski studijski album, pod nazivom OnlySee.');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, zanr_id, opis) VALUES (7, 'Miley', 'Cyrus', 'Ž', '1992-11-23', 'Tennessee', 'Los Angeles', '1.65 m', 4, 'Miley Ray Cyrus je američka pjevačica, glumica i tekstopisac. Njezin otac je country pjevač Billy Ray Cyrus. U svom djetinjstvu držala je manje uloge u TV seriji Doc i filmu Big Fish.');
+INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (1, 'Billie', 'Eilish', 'Ž', '2021-12-18', 'Los Angeles', 'Highland Park', '1.61 m', 'Billie Eilish Pirate Baird OConnell američka pjevačica i kantautorica. Pažnju medija prvi je put privukla 2016. godine kad je na internetsku stranicu SoundCloud prenijela pjesmu Ocean Eyes, koju je naknadno objavio Darkroom, podružnica Interscope Recordsa.', 'Pop');
+INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (2, 'Finneas', 'Baird OConnell', 'M', '1997-07-30', 'Los Angeles', 'Los Angeles', '1.89 m', 'Finneas Baird OConnell, mononimno poznat po svom imenu, američki je kantautor, producent, audio inženjer i glumac. Napisao je i producirao glazbu za razne umjetnike, uključujući svoju sestru Billie Eilish.', 'Pop');
+INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (3, 'Lady', 'Gaga', 'Ž', '1997-07-30', 'New York', 'Manhattan', '1.55 m', 'Stefani Joanne Angelina Germanotta, poznatija po umjetničkom imenu Lady Gaga, američka je kantautorica, producentica i glumica. Odrasla u New Yorku, Lady Gaga, starija od dvije sestre, pohađala je rimokatoličku školu Convent of a Sacred Heart, a kasnije započela studij na Tisch School of Arts Sveučilišta u New Yorku.', 'Dance');
+INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (4, 'Harry', 'Styles', 'M', '1994-02-01', 'Redditch', 'Holmes Chapel', '1.83 m', 'Harry Edward Styles engleski je pjevač, tekstopisac i glumac. Svoju glazbenu karijeru započeo je 2010. godine kao solo natjecatelj u britanskoj glazbenoj natjecateljskoj seriji The X Factor.', 'Pop');
+INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (5, 'Taylor', 'Swift', 'Ž', '1989-12-13', 'Pennsylvania', 'Wyomissing', '1.8 m', 'Taylor Alison Swift američka je kantautorica. Njezino pripovjedačko pisanje pjesama, koje inspiraciju često uzima iz osobnog života, dobilo je široku kritičku pohvalu i medijsku pokrivenost. Rođena u Pennsylvaniji, Swift se preselila u Nashville, Tennessee 2004. godine kako bi nastavila karijeru u country glazbi.', 'Pop');
+INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (6, 'Ariana', 'Grande', 'Ž', '1993-06-16', 'Florida', 'Los Angeles', '1.6 m', 'Ariana Grande-Butera je američka pop i R&B pjevačica, tekstopiskinja te glumica. Svjetsku slavu je stekla putem mjuzikla Broadway, te preuzimanjem uloge Cat Valentine u televizijskim serijama Victorious i Sam & Cat.', 'Pop');
+INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (7, 'Miley', 'Cyrus', 'Ž', '1992-11-23', 'Tennessee', 'Los Angeles', '1.65 m', 'Miley Ray Cyrus je američka pjevačica, glumica i tekstopisac. Njezin otac je country pjevač Billy Ray Cyrus. U svom djetinjstvu držala je manje uloge u TV seriji Doc i filmu Big Fish.', 'Pop');
+INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (8, 'Shawn', 'Mandes', 'M', '1998-08-08', 'Pickering', 'Los Angeles', '1.84 m', 'Shawn Peter Raul Mendes je kanadski pjevač i tekstopisac. Slijedi 2013. godine, objavljujući naslovnice pjesama u aplikaciji za razmjenu video zapisa Vine.', 'Pop');
+INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (9, 'Kanye', 'West', 'M', '1977-06-08', 'Georgia', 'Atlanta', '1.73 m', 'Ye Omari West, bolje poznat samo kao Kanye West, američki je reper, pjevač, tekstopisac, glazbeni producent, redatelj videospotova, filmski redatelj i modni dizajner koji trenutno živi u Wyomingu. Trenutno ima potpisan ugovor s diskografskom kućom Def Jam Recordings, te ima svoju diskografsku kuću GOOD Music.', 'Hip-hop');
+INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (10, 'Whitney', 'Houston', 'Ž', '1963-08-09', 'New Jersey', '-', '1.73 m', 'Whitney Elizabeth Houston bila je američka pjevačica i glumica. U srodstvu s nekoliko poznatih pjevačica, poput njene majke Cissy Houston, rođakinje Dionne Warwick i kume Arethe Franklin, Houston je počela pjevati s jedanaest godina u dječjem gospel zboru.', 'Pop');
+INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (11, 'Sia', 'Furler', 'Ž', '1972-12-18', 'Adelaide', 'Los Angeles', '1.64 m', 'Sia Kate Isobelle Furler australska je pjevačica, tekstopisac, glasovna glumica i redateljica. Karijeru je započela kao pjevačica u acid jazz bendu Crisp sredinom 1990-ih u Adelaideu. 1997., kada se Crisp raspao, u Australiji je izdala svoj debitantski studijski album, pod nazivom OnlySee.', 'Pop');
 
 
 --
--- TOC entry 3001 (class 0 OID 33671)
+-- TOC entry 3000 (class 0 OID 33671)
 -- Dependencies: 200
 -- Data for Name: zanr; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -200,7 +200,7 @@ INSERT INTO public.zanr (zanr_id, naziv_zanra) VALUES (4, 'rock');
 
 
 --
--- TOC entry 3013 (class 0 OID 0)
+-- TOC entry 3012 (class 0 OID 0)
 -- Dependencies: 204
 -- Name: pjesma_id_pjesma_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -209,7 +209,7 @@ SELECT pg_catalog.setval('public.pjesma_id_pjesma_seq', 22, true);
 
 
 --
--- TOC entry 3014 (class 0 OID 0)
+-- TOC entry 3013 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: pjevac_id_pjevac_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -236,7 +236,7 @@ ALTER TABLE ONLY public.zanr
 
 
 --
--- TOC entry 2870 (class 2606 OID 33732)
+-- TOC entry 2869 (class 2606 OID 33732)
 -- Name: pjesma pjesma_id_pjevac_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -244,16 +244,7 @@ ALTER TABLE ONLY public.pjesma
     ADD CONSTRAINT pjesma_id_pjevac_fkey FOREIGN KEY (id_pjevac) REFERENCES public.pjevac(id_pjevac);
 
 
---
--- TOC entry 2869 (class 2606 OID 33690)
--- Name: pjevac pjevac_zanr_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.pjevac
-    ADD CONSTRAINT pjevac_zanr_id_fkey FOREIGN KEY (zanr_id) REFERENCES public.zanr(zanr_id);
-
-
--- Completed on 2021-10-31 17:45:08
+-- Completed on 2021-11-12 19:12:02
 
 --
 -- PostgreSQL database dump complete
