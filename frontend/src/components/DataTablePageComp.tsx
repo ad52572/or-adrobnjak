@@ -62,7 +62,7 @@ export class DataTablePageComp extends React.Component {
         for (let y in this.state.pjesme) {
           if (
             this.state.pjevaci[x]["pjevac_id"] ===
-            this.state.pjesme[y]["pjevac_id"]
+            this.state.pjesme[y]["pjevac"]["pjevac_id"]
           ) {
             let output = {
               datum_rodenja: "",
@@ -186,7 +186,7 @@ export class DataTablePageComp extends React.Component {
                       };
                       let nova_pjesma: any = {
                         naslov: datas[x][10],
-                        trajanje: Number(datas[x][11]),
+                        trajanje: String(datas[x][11]),
                         godina_izdanja: datas[x][12],
                       };
                       novi_pjevac.pjesme.push(nova_pjesma);

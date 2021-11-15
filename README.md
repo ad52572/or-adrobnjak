@@ -18,6 +18,7 @@
 
 - datum izdanja:  31.10.2021.
 - zadnja izmjena: 15.11.2021.
+- naslov: Popis pjevača
 - opis: Ovdje možete pronaći sve informacije o poznatim pjevačima i preuzeti ih u formatu JSON i CSV.
 - kontakt informacije: antun.drobnjak@fer.hr
 - podržani preglednici: chrome, firefox, opera, edge (za ove preglednike dajemo podršku)
