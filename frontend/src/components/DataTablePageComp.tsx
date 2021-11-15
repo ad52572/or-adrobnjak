@@ -213,6 +213,7 @@ export class DataTablePageComp extends React.Component {
                         postoji.push(array[x].id);
                       }
                     }
+
                     const element = document.createElement("a");
                     const file = new Blob(
                       [JSON.stringify(array.filter((n) => n))],
