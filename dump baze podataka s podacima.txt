@@ -3,9 +3,9 @@
 --
 
 -- Dumped from database version 13.2
--- Dumped by pg_dump version 14.0
+-- Dumped by pg_dump version 13.2
 
--- Started on 2021-11-12 19:12:01
+-- Started on 2021-11-16 00:49:38
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,228 +23,119 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 203 (class 1259 OID 33723)
+-- TOC entry 200 (class 1259 OID 38809)
 -- Name: pjesma; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.pjesma (
-    id_pjevac integer,
-    naslov character varying,
-    godina_izdanja character varying,
-    trajanje interval,
-    id_pjesma integer NOT NULL
+    pjesma_id integer NOT NULL,
+    godina_izdanja character varying(255),
+    naslov character varying(255),
+    trajanje integer,
+    pjevac_id integer
 );
 
 
 ALTER TABLE public.pjesma OWNER TO postgres;
 
 --
--- TOC entry 204 (class 1259 OID 33737)
--- Name: pjesma_id_pjesma_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.pjesma_id_pjesma_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.pjesma_id_pjesma_seq OWNER TO postgres;
-
---
--- TOC entry 3010 (class 0 OID 0)
--- Dependencies: 204
--- Name: pjesma_id_pjesma_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.pjesma_id_pjesma_seq OWNED BY public.pjesma.id_pjesma;
-
-
---
--- TOC entry 202 (class 1259 OID 33681)
+-- TOC entry 201 (class 1259 OID 38817)
 -- Name: pjevac; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.pjevac (
-    id_pjevac integer NOT NULL,
-    ime character varying,
-    prezime character varying,
-    spol character varying,
-    datum_rodenja date,
-    mjesto_rodenja character varying,
-    mjesto_stanovanja character varying,
-    visina character varying,
-    opis character varying,
-    zanr character varying
+    pjevac_id integer NOT NULL,
+    datum_rodenja timestamp without time zone,
+    ime character varying(255),
+    mjesto_rodenja character varying(255),
+    mjesto_stanovanja character varying(255),
+    opis character varying(255),
+    prezime character varying(255),
+    spol character varying(255),
+    visina character varying(255),
+    zanr character varying(255)
 );
 
 
 ALTER TABLE public.pjevac OWNER TO postgres;
 
 --
--- TOC entry 201 (class 1259 OID 33679)
--- Name: pjevac_id_pjevac_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.pjevac_id_pjevac_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.pjevac_id_pjevac_seq OWNER TO postgres;
-
---
--- TOC entry 3011 (class 0 OID 0)
--- Dependencies: 201
--- Name: pjevac_id_pjevac_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.pjevac_id_pjevac_seq OWNED BY public.pjevac.id_pjevac;
-
-
---
--- TOC entry 200 (class 1259 OID 33671)
--- Name: zanr; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.zanr (
-    zanr_id integer NOT NULL,
-    naziv_zanra character varying
-);
-
-
-ALTER TABLE public.zanr OWNER TO postgres;
-
---
--- TOC entry 2864 (class 2604 OID 33739)
--- Name: pjesma id_pjesma; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.pjesma ALTER COLUMN id_pjesma SET DEFAULT nextval('public.pjesma_id_pjesma_seq'::regclass);
-
-
---
--- TOC entry 2863 (class 2604 OID 33684)
--- Name: pjevac id_pjevac; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.pjevac ALTER COLUMN id_pjevac SET DEFAULT nextval('public.pjevac_id_pjevac_seq'::regclass);
-
-
---
--- TOC entry 3003 (class 0 OID 33723)
--- Dependencies: 203
+-- TOC entry 2989 (class 0 OID 38809)
+-- Dependencies: 200
 -- Data for Name: pjesma; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (1, 'Ocena Eyes', '2016', '00:03:20', 1);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (1, 'Happier than ever', '2021', '00:03:20', 2);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (2, 'Love is pain', '2021', '00:03:45', 3);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (2, 'The 90s', '2021', '00:03:23', 4);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (3, 'Bad romance', '2009', '00:05:09', 5);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (3, 'Born this way', '2011', '00:07:20', 6);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (4, 'Golden', '2020', '00:03:30', 7);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (4, 'Treat People With Kindness', '2021', '00:03:22', 8);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (5, 'willow', '2020', '00:04:13', 9);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (5, 'Love Story', '2009', '00:03:57', 10);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (6, 'positions', '2020', '00:02:58', 11);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (6, '7 rings', '2019', '00:03:05', 12);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (7, 'Angels Like You', '2021', '00:04:06', 13);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (7, 'Wrecking Ball', '2013', '00:03:42', 14);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (8, 'Wonder', '2020', '00:03:15', 15);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (8, 'Summer Of Love', '2021', '00:03:01', 16);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (9, 'Come to Life', '2021', '00:05:08', 17);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (9, '24', '2021', '00:04:53', 18);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (10, 'I Will Always Love You', '2010', '00:04:34', 19);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (10, 'I Have Nothing', '2009', '00:04:51', 20);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (11, 'Chandelier', '2014', '00:03:52', 21);
-INSERT INTO public.pjesma (id_pjevac, naslov, godina_izdanja, trajanje, id_pjesma) VALUES (11, 'Snowman', '2020', '00:02:53', 22);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (1, '2016', 'Ocena Eyes', 200, 1);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (2, '2021', 'Happier than ever', 2000, 1);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (3, '2021', 'Love is pain', 225, 2);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (4, '2021', 'The 90s', 203, 2);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (5, '2009', 'Bad romance', 309, 3);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (6, '2011', 'Born this way', 443, 3);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (7, '2020', 'Golden', 210, 4);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (8, '2021', 'Treat People With Kindness', 202, 4);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (9, '2020', 'willow', 253, 5);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (10, '2009', 'Love Story', 234, 5);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (11, '2020', 'positions', 178, 6);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (12, '2019', '7 rings', 185, 6);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (13, '2021', 'Angels Like You', 246, 7);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (14, '2013', 'Wrecking Ball', 224, 7);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (15, '2020', 'Wonder', 196, 8);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (16, '2021', 'Summer Of Love', 181, 8);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (17, '2021', 'Come to Life', 308, 9);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (18, '2021', '24', 293, 9);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (19, '2010', 'I Will Always Love You', 274, 10);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (20, '2009', 'I Have Nothing', 291, 10);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (21, '2014', 'Chandelier', 232, 11);
+INSERT INTO public.pjesma (pjesma_id, godina_izdanja, naslov, trajanje, pjevac_id) VALUES (22, '2020', 'Snowman', 173, 11);
 
 
 --
--- TOC entry 3002 (class 0 OID 33681)
--- Dependencies: 202
+-- TOC entry 2990 (class 0 OID 38817)
+-- Dependencies: 201
 -- Data for Name: pjevac; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (1, 'Billie', 'Eilish', 'Ž', '2021-12-18', 'Los Angeles', 'Highland Park', '1.61 m', 'Billie Eilish Pirate Baird OConnell američka pjevačica i kantautorica. Pažnju medija prvi je put privukla 2016. godine kad je na internetsku stranicu SoundCloud prenijela pjesmu Ocean Eyes, koju je naknadno objavio Darkroom, podružnica Interscope Recordsa.', 'Pop');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (2, 'Finneas', 'Baird OConnell', 'M', '1997-07-30', 'Los Angeles', 'Los Angeles', '1.89 m', 'Finneas Baird OConnell, mononimno poznat po svom imenu, američki je kantautor, producent, audio inženjer i glumac. Napisao je i producirao glazbu za razne umjetnike, uključujući svoju sestru Billie Eilish.', 'Pop');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (3, 'Lady', 'Gaga', 'Ž', '1997-07-30', 'New York', 'Manhattan', '1.55 m', 'Stefani Joanne Angelina Germanotta, poznatija po umjetničkom imenu Lady Gaga, američka je kantautorica, producentica i glumica. Odrasla u New Yorku, Lady Gaga, starija od dvije sestre, pohađala je rimokatoličku školu Convent of a Sacred Heart, a kasnije započela studij na Tisch School of Arts Sveučilišta u New Yorku.', 'Dance');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (4, 'Harry', 'Styles', 'M', '1994-02-01', 'Redditch', 'Holmes Chapel', '1.83 m', 'Harry Edward Styles engleski je pjevač, tekstopisac i glumac. Svoju glazbenu karijeru započeo je 2010. godine kao solo natjecatelj u britanskoj glazbenoj natjecateljskoj seriji The X Factor.', 'Pop');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (5, 'Taylor', 'Swift', 'Ž', '1989-12-13', 'Pennsylvania', 'Wyomissing', '1.8 m', 'Taylor Alison Swift američka je kantautorica. Njezino pripovjedačko pisanje pjesama, koje inspiraciju često uzima iz osobnog života, dobilo je široku kritičku pohvalu i medijsku pokrivenost. Rođena u Pennsylvaniji, Swift se preselila u Nashville, Tennessee 2004. godine kako bi nastavila karijeru u country glazbi.', 'Pop');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (6, 'Ariana', 'Grande', 'Ž', '1993-06-16', 'Florida', 'Los Angeles', '1.6 m', 'Ariana Grande-Butera je američka pop i R&B pjevačica, tekstopiskinja te glumica. Svjetsku slavu je stekla putem mjuzikla Broadway, te preuzimanjem uloge Cat Valentine u televizijskim serijama Victorious i Sam & Cat.', 'Pop');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (7, 'Miley', 'Cyrus', 'Ž', '1992-11-23', 'Tennessee', 'Los Angeles', '1.65 m', 'Miley Ray Cyrus je američka pjevačica, glumica i tekstopisac. Njezin otac je country pjevač Billy Ray Cyrus. U svom djetinjstvu držala je manje uloge u TV seriji Doc i filmu Big Fish.', 'Pop');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (8, 'Shawn', 'Mandes', 'M', '1998-08-08', 'Pickering', 'Los Angeles', '1.84 m', 'Shawn Peter Raul Mendes je kanadski pjevač i tekstopisac. Slijedi 2013. godine, objavljujući naslovnice pjesama u aplikaciji za razmjenu video zapisa Vine.', 'Pop');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (9, 'Kanye', 'West', 'M', '1977-06-08', 'Georgia', 'Atlanta', '1.73 m', 'Ye Omari West, bolje poznat samo kao Kanye West, američki je reper, pjevač, tekstopisac, glazbeni producent, redatelj videospotova, filmski redatelj i modni dizajner koji trenutno živi u Wyomingu. Trenutno ima potpisan ugovor s diskografskom kućom Def Jam Recordings, te ima svoju diskografsku kuću GOOD Music.', 'Hip-hop');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (10, 'Whitney', 'Houston', 'Ž', '1963-08-09', 'New Jersey', '-', '1.73 m', 'Whitney Elizabeth Houston bila je američka pjevačica i glumica. U srodstvu s nekoliko poznatih pjevačica, poput njene majke Cissy Houston, rođakinje Dionne Warwick i kume Arethe Franklin, Houston je počela pjevati s jedanaest godina u dječjem gospel zboru.', 'Pop');
-INSERT INTO public.pjevac (id_pjevac, ime, prezime, spol, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, visina, opis, zanr) VALUES (11, 'Sia', 'Furler', 'Ž', '1972-12-18', 'Adelaide', 'Los Angeles', '1.64 m', 'Sia Kate Isobelle Furler australska je pjevačica, tekstopisac, glasovna glumica i redateljica. Karijeru je započela kao pjevačica u acid jazz bendu Crisp sredinom 1990-ih u Adelaideu. 1997., kada se Crisp raspao, u Australiji je izdala svoj debitantski studijski album, pod nazivom OnlySee.', 'Pop');
+INSERT INTO public.pjevac (pjevac_id, datum_rodenja, ime, mjesto_rodenja, mjesto_stanovanja, opis, prezime, spol, visina, zanr) VALUES (1, '2021-12-18 00:00:00', 'Billie', 'Los Angeles', 'Highland Park', 'Billie Eilish Pirate Baird OConnell američka pjevačica i kantautorica. Pažnju medija prvi je put privukla 2016. godine kad je na internetsku stranicu SoundCloud prenijela pjesmu Ocean Eyes.', 'Eilish', 'Ž', '1.61 m', 'Pop');
+INSERT INTO public.pjevac (pjevac_id, datum_rodenja, ime, mjesto_rodenja, mjesto_stanovanja, opis, prezime, spol, visina, zanr) VALUES (3, '1997-07-30 00:00:00', 'Lady', 'New York', 'Manhattan', 'Stefani Joanne Angelina Germanotta, poznatija po umjetničkom imenu Lady Gaga, američka je kantautorica, producentica i glumica.', 'Gaga', 'Ž', '1.55 m', 'Dance');
+INSERT INTO public.pjevac (pjevac_id, datum_rodenja, ime, mjesto_rodenja, mjesto_stanovanja, opis, prezime, spol, visina, zanr) VALUES (4, '1994-02-01 00:00:00', 'Harry', 'Redditch', 'Holmes Chapel', 'Harry Edward Styles engleski je pjevač, tekstopisac i glumac. Svoju glazbenu karijeru započeo je 2010. godine kao solo natjecatelj u seriji The X Factor.', 'Styles', 'M', '1.83 m', 'Pop');
+INSERT INTO public.pjevac (pjevac_id, datum_rodenja, ime, mjesto_rodenja, mjesto_stanovanja, opis, prezime, spol, visina, zanr) VALUES (5, '1989-12-13 00:00:00', 'Taylor', 'Pennsylvania', 'Wyomissing', 'Taylor Alison Swift američka je kantautorica. Njezino pripovjedačko pisanje pjesama dobilo je široku kritičku pohvalu i medijsku pokrivenost.', 'Swift', 'Ž', '1.8 m', 'Pop');
+INSERT INTO public.pjevac (pjevac_id, datum_rodenja, ime, mjesto_rodenja, mjesto_stanovanja, opis, prezime, spol, visina, zanr) VALUES (6, '1993-06-16 00:00:00', 'Ariana', 'Florida', 'Los Angeles', 'Ariana Grande-Butera je američka pop i R&B pjevačica, tekstopiskinja te glumica. Svjetsku slavu je stekla putem mjuzikla Broadway.', 'Grande', 'Ž', '1.6 m', 'Pop');
+INSERT INTO public.pjevac (pjevac_id, datum_rodenja, ime, mjesto_rodenja, mjesto_stanovanja, opis, prezime, spol, visina, zanr) VALUES (7, '1992-11-23 00:00:00', 'Miley', 'Tennessee', 'Los Angeles', 'Miley Ray Cyrus je američka pjevačica, glumica i tekstopisac. Njezin otac je country pjevač Billy Ray Cyrus. U svom djetinjstvu držala je manje uloge u TV seriji Doc i filmu Big Fish.', 'Cyrus', 'Ž', '1.65 m', 'Pop');
+INSERT INTO public.pjevac (pjevac_id, datum_rodenja, ime, mjesto_rodenja, mjesto_stanovanja, opis, prezime, spol, visina, zanr) VALUES (8, '1998-08-08 00:00:00', 'Shawn', 'Pickering', 'Los Angeles', 'Shawn Peter Raul Mendes je kanadski pjevač i tekstopisac. Slijedi 2013. godine, objavljujući naslovnice pjesama u aplikaciji za razmjenu video zapisa Vine.', 'Mandes', 'M', '1.84 m', 'Pop');
+INSERT INTO public.pjevac (pjevac_id, datum_rodenja, ime, mjesto_rodenja, mjesto_stanovanja, opis, prezime, spol, visina, zanr) VALUES (9, '1977-06-08 00:00:00', 'Kanye', 'Georgia', 'Atlanta', 'Ye Omari West, bolje poznat samo kao Kanye West, američki je reper, pjevač, tekstopisac, glazbeni producent, redatelj videospotova, filmski redatelj i modni dizajner.', 'West', 'M', '1.73 m', 'Hip-hop');
+INSERT INTO public.pjevac (pjevac_id, datum_rodenja, ime, mjesto_rodenja, mjesto_stanovanja, opis, prezime, spol, visina, zanr) VALUES (10, '1963-08-09 00:00:00', 'Whitney', 'New Jersey', '-', 'Whitney Elizabeth Houston bila je američka pjevačica i glumica. U srodstvu s nekoliko poznatih pjevačica, poput njene majke Cissy Houston.', 'Houston', 'Ž', '1.73 m', 'Pop');
+INSERT INTO public.pjevac (pjevac_id, datum_rodenja, ime, mjesto_rodenja, mjesto_stanovanja, opis, prezime, spol, visina, zanr) VALUES (11, '1972-12-18 00:00:00', 'Sia', 'Adelaide', 'Los Angeles', 'Sia Kate Isobelle Furler australska je pjevačica, tekstopisac, glasovna glumica i redateljica. Karijeru je započela kao pjevačica u acid jazz bendu Crisp.', 'Furler', 'Ž', '1.64 m', 'Pop');
+INSERT INTO public.pjevac (pjevac_id, datum_rodenja, ime, mjesto_rodenja, mjesto_stanovanja, opis, prezime, spol, visina, zanr) VALUES (2, '1997-07-30 00:00:00', 'Finneas', 'Los Angeles', 'Los Angeles', 'Finneas Baird OConnell, mononimno poznat po svom imenu, američki je kantautor, producent, audio inženjer i glumac.', 'Baird OConnell', 'M', '1.89 m', 'Pop');
 
 
 --
--- TOC entry 3000 (class 0 OID 33671)
--- Dependencies: 200
--- Data for Name: zanr; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 2855 (class 2606 OID 38816)
+-- Name: pjesma pjesma_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.zanr (zanr_id, naziv_zanra) VALUES (1, 'pop');
-INSERT INTO public.zanr (zanr_id, naziv_zanra) VALUES (2, 'dance');
-INSERT INTO public.zanr (zanr_id, naziv_zanra) VALUES (3, 'Hip-hop');
-INSERT INTO public.zanr (zanr_id, naziv_zanra) VALUES (4, 'rock');
+ALTER TABLE ONLY public.pjesma
+    ADD CONSTRAINT pjesma_pkey PRIMARY KEY (pjesma_id);
 
 
 --
--- TOC entry 3012 (class 0 OID 0)
--- Dependencies: 204
--- Name: pjesma_id_pjesma_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.pjesma_id_pjesma_seq', 22, true);
-
-
---
--- TOC entry 3013 (class 0 OID 0)
--- Dependencies: 201
--- Name: pjevac_id_pjevac_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.pjevac_id_pjevac_seq', 1, false);
-
-
---
--- TOC entry 2868 (class 2606 OID 33689)
+-- TOC entry 2857 (class 2606 OID 38824)
 -- Name: pjevac pjevac_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.pjevac
-    ADD CONSTRAINT pjevac_pkey PRIMARY KEY (id_pjevac);
+    ADD CONSTRAINT pjevac_pkey PRIMARY KEY (pjevac_id);
 
 
 --
--- TOC entry 2866 (class 2606 OID 33678)
--- Name: zanr zanr_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.zanr
-    ADD CONSTRAINT zanr_pkey PRIMARY KEY (zanr_id);
-
-
---
--- TOC entry 2869 (class 2606 OID 33732)
--- Name: pjesma pjesma_id_pjevac_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2858 (class 2606 OID 38825)
+-- Name: pjesma fkbh1mnffa34x9tru6worbj53vj; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.pjesma
-    ADD CONSTRAINT pjesma_id_pjevac_fkey FOREIGN KEY (id_pjevac) REFERENCES public.pjevac(id_pjevac);
+    ADD CONSTRAINT fkbh1mnffa34x9tru6worbj53vj FOREIGN KEY (pjevac_id) REFERENCES public.pjevac(pjevac_id);
 
 
--- Completed on 2021-11-12 19:12:02
+-- Completed on 2021-11-16 00:49:38
 
 --
 -- PostgreSQL database dump complete
