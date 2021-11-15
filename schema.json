@@ -1,0 +1,233 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://localhost:3000/pjevaci.json",
+  "type": "array",
+  "title": "Popis pjevaca",
+  "description": "Ovdje možete pronaći sve informacije o poznatim pjevačima i preuzeti ih u formatu JSON i CSV.",
+  "examples": [
+    [
+      {
+        "id": 1,
+        "ime": "Billie",
+        "prezime": "Eilish",
+        "datum_rodenja": "2021-12-17",
+        "mjesto_rodenja": "Los Angeles",
+        "mjesto_stanovanja": "Highland Park",
+        "zanr": "Pop",
+        "spol": "Ž",
+        "visina": "1.61 m",
+        "opis": "Billie Eilish Pirate Baird OConnell američka pjevačica i kantautorica. Pažnju medija prvi je put privukla 2016. godine kad je na internetsku stranicu SoundCloud prenijela pjesmu Ocean Eyes.",
+        "pjesme": [
+          {
+            "naslov": "Ocena Eyes",
+            "trajanje": "3 m, 20 s",
+            "godina_izdanja": "2016"
+          },
+          {
+            "naslov": "Happier than ever",
+            "trajanje": "33 m, 20 s",
+            "godina_izdanja": "2021"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "ime": "Lady",
+        "prezime": "Gaga",
+        "datum_rodenja": "1997-07-29",
+        "mjesto_rodenja": "New York",
+        "mjesto_stanovanja": "Manhattan",
+        "zanr": "Dance",
+        "spol": "Ž",
+        "visina": "1.55 m",
+        "opis": "Stefani Joanne Angelina Germanotta, poznatija po umjetničkom imenu Lady Gaga, američka je kantautorica, producentica i glumica.",
+        "pjesme": [
+          {
+            "naslov": "Bad romance",
+            "trajanje": "5 m, 9 s",
+            "godina_izdanja": "2009"
+          },
+          {
+            "naslov": "Born this way",
+            "trajanje": "7 m, 23 s",
+            "godina_izdanja": "2011"
+          }
+        ]
+      }
+    ]
+  ],
+  "additionalItems": true,
+  "items": {
+    "anyOf": [
+      {
+        "type": "object",
+        "title": "Pjevac",
+        "description": "Objekt koji sadrži sve elemente pjevaca.",
+
+        "examples": [
+          {
+            "id": 1,
+            "ime": "Billie",
+            "prezime": "Eilish",
+            "datum_rodenja": "2021-12-17",
+            "mjesto_rodenja": "Los Angeles",
+            "mjesto_stanovanja": "Highland Park",
+            "zanr": "Pop",
+            "spol": "Ž",
+            "visina": "1.61 m",
+            "opis": "Billie Eilish Pirate Baird OConnell američka pjevačica i kantautorica. Pažnju medija prvi je put privukla 2016. godine kad je na internetsku stranicu SoundCloud prenijela pjesmu Ocean Eyes.",
+            "pjesme": [
+              {
+                "naslov": "Ocena Eyes",
+                "trajanje": "3 m, 20 s",
+                "godina_izdanja": "2016"
+              },
+              {
+                "naslov": "Happier than ever",
+                "trajanje": "33 m, 20 s",
+                "godina_izdanja": "2021"
+              }
+            ]
+          }
+        ],
+        "required": [
+          "id",
+          "ime",
+          "prezime",
+          "datum_rodenja",
+          "mjesto_rodenja",
+          "zanr",
+          "spol",
+          "visina",
+          "opis",
+          "pjesme"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id",
+            "description": "Jedinstveni identifikatro u bazi.",
+            "examples": [1]
+          },
+          "ime": {
+            "type": "string",
+            "title": "Ime",
+            "description": "Scensko ili pravo ime pjevača.",
+            "examples": ["Billie"]
+          },
+          "prezime": {
+            "type": "string",
+            "title": "Prezime",
+            "description": "Prezime pjevača.",
+            "examples": ["Eilish"]
+          },
+          "datum_rodenja": {
+            "type": "string",
+            "title": "Datum rođenja",
+            "description": "Datum rođenja pjevača.",
+            "examples": ["2021-12-17"]
+          },
+          "mjesto_rodenja": {
+            "type": "string",
+            "title": "Mjesto rođenja",
+            "description": "Mjesto rođenja pjevača.",
+            "examples": ["Los Angeles"]
+          },
+          "mjesto_stanovanja": {
+            "type": "string",
+            "title": "Mjesto stanovanja",
+            "description": "Mjesto stanovanja pjevača.",
+            "examples": ["Highland Park"]
+          },
+          "zanr": {
+            "type": "string",
+            "title": "The zanr schema",
+            "description": ".",
+            "examples": ["Pop"]
+          },
+          "spol": {
+            "type": "string",
+            "title": "Spol",
+            "description": "Spol pjevača prikazan kao M ili Ž.",
+            "examples": ["Ž"]
+          },
+          "visina": {
+            "type": "string",
+            "title": "Visina",
+            "description": "Visina pjevača iskazana u metrima.",
+            "examples": ["1.61 m"]
+          },
+          "opis": {
+            "type": "string",
+            "title": "Opsi",
+            "description": "Kratak opis pjevača.",
+            "examples": [
+              "Billie Eilish Pirate Baird OConnell američka pjevačica i kantautorica. Pažnju medija prvi je put privukla 2016. godine kad je na internetsku stranicu SoundCloud prenijela pjesmu Ocean Eyes."
+            ]
+          },
+          "pjesme": {
+            "type": "array",
+            "title": "Pjesme",
+            "description": "Popis pjesama.",
+
+            "examples": [
+              [
+                {
+                  "naslov": "Ocena Eyes",
+                  "trajanje": "3 m, 20 s",
+                  "godina_izdanja": "2016"
+                },
+                {
+                  "naslov": "Happier than ever",
+                  "trajanje": "33 m, 20 s",
+                  "godina_izdanja": "2021"
+                }
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "title": "Pjesma",
+                  "description": "Objekt koji sadrži sve informacije o pjesmi.",
+
+                  "examples": [
+                    {
+                      "naslov": "Ocena Eyes",
+                      "trajanje": "3 m, 20 s",
+                      "godina_izdanja": "2016"
+                    }
+                  ],
+                  "required": ["naslov", "trajanje", "godina_izdanja"],
+                  "properties": {
+                    "naslov": {
+                      "type": "string",
+                      "title": "Naslov",
+                      "description": "Naslov pjesme.",
+                      "examples": ["Ocena Eyes"]
+                    },
+                    "trajanje": {
+                      "type": "string",
+                      "title": "Trajanje",
+                      "description": "Trajanje pjesme iskazano u minutama i sekundama.",
+                      "examples": ["3 m, 20 s"]
+                    },
+                    "godina_izdanja": {
+                      "type": "string",
+                      "title": "Godina izdanja",
+                      "description": "Godina izdanja pjesme.",
+                      "examples": ["2016"]
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    ]
+  }
+}
