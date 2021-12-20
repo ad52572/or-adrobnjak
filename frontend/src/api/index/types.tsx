@@ -17,4 +17,5 @@ export interface Pjevaci{
     visina: string;
     opis: string;
     zanr: string;
+    pjesme: Array<Pjesme>;
 }

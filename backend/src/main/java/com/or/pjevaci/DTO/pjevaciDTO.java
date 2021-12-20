@@ -1,5 +1,8 @@
 package com.or.pjevaci.DTO;
 
+import com.or.pjevaci.entity.Pjesma;
+
+import java.util.ArrayList;
 import java.util.Date;
 
 public class pjevaciDTO {
@@ -13,6 +16,7 @@ public class pjevaciDTO {
     private String visina;
     private String opis;
     private String zanr;
+    private ArrayList<Pjesma> pjesma;
 
     public Integer getPjevac_id() {
         return pjevac_id;
@@ -20,6 +24,14 @@ public class pjevaciDTO {
 
     public void setPjevac_id(Integer pjevac_id) {
         this.pjevac_id = pjevac_id;
+    }
+
+    public ArrayList<Pjesma> getPjesma() {
+        return pjesma;
+    }
+
+    public void setPjesma(ArrayList<Pjesma> pjesma) {
+        this.pjesma = pjesma;
     }
 
     public String getIme() {

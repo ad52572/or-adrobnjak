@@ -1,9 +1,8 @@
 package com.or.pjevaci.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 
 @Entity
@@ -22,6 +21,9 @@ public class Pjevac {
     private String opis;
     private String zanr;
 
+    @OneToMany(mappedBy = "pjevac", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<Pjesma> pjesma;
 
     public Pjevac() {
 
@@ -107,20 +109,13 @@ public class Pjevac {
         this.zanr = zanr;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "pjevac_id=" + pjevac_id +
-                ", ime='" + ime + '\'' +
-                ", prezime='" + prezime + '\'' +
-                ", spol='" + spol + '\'' +
-                ", datum_rodenja='" + datum_rodenja + '\'' +
-                ", mjesto_rodenja='" + mjesto_rodenja + '\'' +
-                ", mjesto_stanovanja=" + mjesto_stanovanja +
-                ", visina=" + visina +
-                ", opis=" + opis +
-                ", zanr=" + zanr +
-                '}';
+    public Set<Pjesma> getPjesma() {
+        return pjesma;
     }
+
+    public void setZanr(Set<Pjesma> pjesma) {
+        this.pjesma = pjesma;
+    }
+
 
 }

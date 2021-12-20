@@ -1,5 +1,5 @@
 import React from "react";
-import {DataTablePageComp} from "../../components/DataTablePageComp";
+import DataTablePageComp from "../../components/DataTablePageComp";
 import Header from "../../components/Header";
 
 

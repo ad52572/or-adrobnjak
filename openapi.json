@@ -1,0 +1,383 @@
+{
+  "openapi": "3.0.3",
+  "swagger": "2.0",
+  "info": {
+    "description": "Ovo je Server za prikaz pjevaca i njihovih pjesama",
+    "version": "1.0.0",
+    "title": "Pjevaci",
+    "contact": {
+      "email": "antun.drobnjak@fer.hr"
+    },
+    "license": {
+      "name": "GNU General Public License v3.0",
+      "url": "https://www.gnu.org/licenses/gpl-3.0.html"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Pjevac",
+      "description": "Sve o pjevacu"
+    },
+    {
+      "name": "Pjesma",
+      "description": "Sve o pjesmi"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/pjevaci": {
+      "get": {
+        "tags": [
+          "pjevac"
+        ],
+        "summary": "Dohvati sve pjevace.",
+        "description": "Dohvacanje svih pjevaca iz baze podataka.",
+        "operationId": "Get",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "parameter_name",
+            "in": "query",
+            "description": "description",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Podaci uspjenso dohvaceni!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          },
+          "400": {
+            "description": "Nema podataka koji odgovaraju uvjetu!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "pjevac"
+        ],
+        "description": "Dodati novog pjevaca s pjesmama",
+        "operationId": "createPjevac",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Pjevac objekt koji mora biti dodan u bazu.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pjevac"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Podaci uspjenso dohvaceni!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          },
+          "404": {
+            "description": "Nema podataka koji odgovaraju uvjetu!"
+          }
+        }
+      }
+    },
+    "/pjevaci/id": {
+      "get": {
+        "tags": [
+          "pjevac"
+        ],
+        "summary": "Dohvati pjevace po IDu",
+        "description": "Dohvacanje pjevaca koji odgovaraju id",
+        "operationId": "GetById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Id pjevaca",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Podaci uspjenso dohvaceni!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          },
+          "400": {
+            "description": "Nema podataka koji odgovaraju uvjetu!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "pjevac"
+        ],
+        "summary": "Azuriraj postojeceg pjevac",
+        "description": "Azuriraj postojeceg pjevac",
+        "operationId": "updatePjevac",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Pjevac objekt koji mora biti dodan u bazu.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pjevac"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Podaci uspjenso dohvaceni!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          },
+          "404": {
+            "description": "Nema podataka koji odgovaraju uvjetu!"
+          }
+        }
+      }
+    },
+    "/pjevaci/zanr/zanr": {
+      "get": {
+        "tags": [
+          "pjevac"
+        ],
+        "summary": "Dohvati pjevace po zanru",
+        "description": "Dohvacanje pjevaca koji odgovaraju zanru",
+        "operationId": "GetByZnar",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "zanr",
+            "in": "query",
+            "description": "zanr pjevaca",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Podaci uspjenso dohvaceni!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          },
+          "400": {
+            "description": "Nema podataka koji odgovaraju uvjetu!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pjevaci/spol/spol": {
+      "get": {
+        "tags": [
+          "pjevac"
+        ],
+        "summary": "Dohvati pjevace po spolu",
+        "description": "Dohvacanje pjevaca koji odgovaraju spolu",
+        "operationId": "GetBySpol",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "spol",
+            "in": "query",
+            "description": "spol pjevaca",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Podaci uspjenso dohvaceni!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          },
+          "400": {
+            "description": "Nema podataka koji odgovaraju uvjetu!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pjevaci/imeIliPrezime/ime": {
+      "get": {
+        "tags": [
+          "pjevac"
+        ],
+        "summary": "Dohvati pjevace po imenu/prezimenu",
+        "description": "Dohvacanje pjevaca koji odgovaraju imenu ili prezimenu.",
+        "operationId": "GetByIme",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "ime",
+            "in": "query",
+            "description": "ime/prezime pjevaca",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Podaci uspjenso dohvaceni!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          },
+          "400": {
+            "description": "Nema podataka koji odgovaraju uvjetu!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pjevac"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "petstore_auth": {
+    "type": "oauth2",
+    "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+    "flow": "implicit",
+    "scopes": {
+      "write:pets": "modify pets in your account",
+      "read:pets": "read your pets"
+    }
+  },
+  "definitions": {
+    "Pjevac": {
+      "type": "object",
+      "properties": {
+        "pjevac_id": {
+          "type": "integer"
+        },
+        "ime": {
+          "type": "string"
+        },
+        "prezime": {
+          "type": "string"
+        },
+        "spol": {
+          "type": "string"
+        },
+        "datum_rodenja": {
+          "type": "string"
+        },
+        "mjesto_rodenja": {
+          "type": "string"
+        },
+        "mjesto_stanovanja": {
+          "type": "string"
+        },
+        "visina": {
+          "type": "string"
+        },
+        "opis": {
+          "type": "string"
+        },
+        "zanr": {
+          "type": "string"
+        }
+      }
+    },
+    "Pjesma": {
+      "type": "object",
+      "properties": {
+        "pjesma_id": {
+          "type": "integer"
+        },
+        "naslov": {
+          "type": "string"
+        },
+        "godina_izdanja": {
+          "type": "string"
+        },
+        "trajanje": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

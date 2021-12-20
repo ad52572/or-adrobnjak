@@ -1,6 +1,8 @@
 package com.or.pjevaci.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class Pjesma {
     private String godina_izdanja;
     private Integer trajanje;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pjevac_id")
     private Pjevac pjevac;
@@ -57,8 +60,4 @@ public class Pjesma {
         this.trajanje = trajanje;
     }
 
-    @Override
-    public String toString() {
-        return "pjesma [pjesma_id=" + pjesma_id + ", naslov=" + naslov + ", godina_izdanja=" + godina_izdanja + ", trajanje=" + trajanje + "]";
-    }
 }
