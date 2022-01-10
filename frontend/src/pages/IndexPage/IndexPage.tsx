@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import {
   Button,
@@ -14,12 +14,94 @@ import {
   Typography,
 } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
+import Profile from "../../components/Profile";
+import {
+  deleteFile,
+  getAll,
+  getAllJson,
+  postJson,
+} from "../../api/files/files";
+import {useAuth0} from "@auth0/auth0-react";
 
-export default function DataTablePage() {
-  //const classes = useStyles();
+export default function IndexPage() {
   function createData(atribut: string, opis: string, tip: string) {
     return { atribut, opis, tip };
   }
+
+  const [jsonUrl, setJsonUrl] = useState<string>("");
+  const [csvUrl, setCsvUrl] = useState<string>("");
+
+  const { isAuthenticated } = useAuth0()
+
+  useEffect(() => {
+    getAll().then((result) => {
+      result.forEach((element) => {
+        if (element.contentType == "text/csv") {
+          setCsvUrl(element.url);
+        } else if (element.contentType == "application/json") {
+          setJsonUrl(element.url);
+        }
+      });
+    });
+  });
+
+
+  const refreshData = () => {
+    getAllJson()
+      .then((res) => {
+        deleteFile(jsonUrl);
+        deleteFile(csvUrl);
+        let dataCSV = "ime, prezime, opis, datum_rodenja, mjesto_rodenja, mjesto_stanovanja, spol, visina, zanr, pjesma (naslov trajanje godina_izdanja)";
+        for (let x of res) {
+          let row =
+            x.ime +
+            " ," +
+            x.prezime +
+            " ," +
+            x.opis +
+            " ," +
+            x.datum_rodenja +
+            " ," +
+            x.mjesto_rodenja +
+            " ," +
+            x.mjesto_stanovanja +
+            " ," +
+            x.spol +
+            x.visina +
+            " ," +
+            x.zanr;
+          for (let y of x.pjesma) {
+            dataCSV =
+              dataCSV +
+              row +
+              y.naslov +
+              " " +
+              y.trajanje +
+              y.godina_izdanja +
+              "\n";
+          }
+        }
+        const blob = new Blob([JSON.stringify(res)], {
+          type: "application/json",
+        });
+        const tmpFile = new File([blob], "pjevaci.json", {
+          type: "application/json",
+        });
+        const form = new FormData();
+        form.append("file", tmpFile);
+        postJson(form).then((res) => console.log("successfull upload json"));
+        const blob2 = new Blob([dataCSV], {
+          type: "text/csv",
+        });
+        const tmpFile2 = new File([blob2], "pjevaci.csv", {
+          type: "text/csv",
+        });
+        const form2 = new FormData();
+        form2.append("file", tmpFile2);
+        postJson(form2).then((res) => console.log("successfull upload csv"));
+      })
+      .catch((err) => console.log(err));
+  };
 
   const rows = [
     createData("ime", "ime pjevača pod kojim nastupa", "varchar"),
@@ -41,7 +123,8 @@ export default function DataTablePage() {
   return (
     <div>
       <Header />
-      <div style={{ maxWidth: "90%", margin: "auto", paddingTop: "20px" }}>
+      <div style={{ maxWidth: "90%", margin: "auto", paddingTop: "80px" }}>
+
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
@@ -67,12 +150,14 @@ export default function DataTablePage() {
         </TableContainer>
       </div>
       <div style={{ width: "90%", margin: "auto", paddingTop: "15px" }}>
+        { isAuthenticated && <Button onClick={() => refreshData()}>Osvježi podatke</Button>}
+
         <Card>
           <CardContent>
             <Typography>
               Preuzmite podatke o pjevacima u JSON formatu:
             </Typography>
-            <a href="pjevaci.json" download="pjevaci.json">
+            <a href={jsonUrl}>
               <Button startIcon={<DownloadIcon />} type="button">
                 Download data!
               </Button>
@@ -86,7 +171,7 @@ export default function DataTablePage() {
             <Typography>
               Preuzmite podatke o pjevacima u CSV formatu:
             </Typography>
-            <a href="pjevaci.csv" download="pjevaci.csv">
+            <a href={csvUrl}>
               <Button startIcon={<DownloadIcon />} type="button">
                 Download data!
               </Button>

@@ -1,8 +1,16 @@
 package com.or.pjevaci.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.or.pjevaci.entity.Pjesma;
 import com.or.pjevaci.entity.Pjevac;
+import com.or.pjevaci.jsonLD.MusicRecording;
+import com.or.pjevaci.jsonLD.Person;
 import com.or.pjevaci.responseHandler.ResponseHandler;
+import com.or.pjevaci.service.pjesmeService;
 import com.or.pjevaci.service.pjevaciService;
+import ioinformarics.oss.jackson.module.jsonld.JsonldModule;
+import ioinformarics.oss.jackson.module.jsonld.JsonldResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpHeaders;
@@ -24,10 +32,12 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class apiController {
     private final pjevaciService pjevaciService;
+    private final pjesmeService pjesmeSerivce;
 
     @Autowired
-    public apiController(pjevaciService pjevaciService) {
+    public apiController(pjevaciService pjevaciService, pjesmeService pjesmeSerivce) {
         this.pjevaciService = pjevaciService;
+        this.pjesmeSerivce = pjesmeSerivce;
     }
 
     @GetMapping("/pjevaci")
@@ -60,6 +70,7 @@ public class apiController {
 
     @GetMapping("/pjevaci/zanr/{zanr}")
     public ResponseEntity<Object> GetByZanr(@PathVariable("zanr") String zanr) {
+
         try {
             ArrayList<Pjevac> data = pjevaciService.findByZanr(zanr);
             if (data.isEmpty()) {
@@ -76,10 +87,35 @@ public class apiController {
     public ResponseEntity<Object> GetBySpol(@PathVariable("spol") String spol) {
         try {
             ArrayList<Pjevac> data = pjevaciService.findBySpol(spol);
+            // Register Jsonld Module with Jackson
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.registerModule(new JsonldModule());
+
+
+            ArrayList<String> response = new ArrayList<String>();
+            for (Pjevac singer : data) {
+                Person person = new Person();
+                person.birthDate = singer.getDatum_rodenja().toString();
+                person.birthPlace = singer.getMjesto_rodenja();
+                person.familyName = singer.getPrezime();
+                person.gender = singer.getSpol();
+                person.givenName = singer.getIme();
+                person.height = singer.getVisina();
+                person.homeLocation = singer.getMjesto_stanovanja();
+                person.id = singer.getPjevac_id();
+                String personJsonLd = null;
+                try {
+                    personJsonLd = objectMapper.writer().writeValueAsString(JsonldResource.Builder.create().build(person));
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+                response.add(personJsonLd);
+
+            }
             if (data.isEmpty()) {
                 return ResponseHandler.generateResponse("Nema podataka koji odgovaraju uvjetu!", HttpStatus.NOT_FOUND, null);
             } else {
-                return ResponseHandler.generateResponse("Podaci uspjenso dohvaceni!", HttpStatus.OK, data);
+                return ResponseHandler.generateResponse("Podaci uspjenso dohvaceni!", HttpStatus.OK, response);
             }
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
@@ -113,6 +149,39 @@ public class apiController {
                 return ResponseHandler.generateResponse("Nema podataka koji odgovaraju uvjetu!", HttpStatus.OK, data);
             } else {
                 return ResponseHandler.generateResponse("Podaci uspjenso dohvaceni!", HttpStatus.OK, data);
+            }
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);
+        }
+    }
+
+    @GetMapping("/pjevaci/pjesme/{naslov}")
+    public ResponseEntity<Object> GetPjesmeByIme(@PathVariable("naslov") String naslov) {
+
+
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.registerModule(new JsonldModule());
+            Pjesma data = pjesmeSerivce.pjesmaByNaslov(naslov);
+
+            ArrayList<String> response = new ArrayList<String>();
+
+            MusicRecording musicRecording = new MusicRecording();
+            musicRecording.byArtist = data.getPjevac().getIme() + " " + data.getPjevac().getPrezime();
+            musicRecording.copyrightYear = data.getGodina_izdanja();
+            musicRecording.duration = data.getTrajanje().toString();
+            String personJsonLd = null;
+            try {
+                personJsonLd = objectMapper.writer().writeValueAsString(JsonldResource.Builder.create().build(musicRecording));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+            response.add(personJsonLd);
+
+            if (data == null) {
+                return ResponseHandler.generateResponse("Nema podataka koji odgovaraju uvjetu!", HttpStatus.OK, data);
+            } else {
+                return ResponseHandler.generateResponse("Podaci uspjenso dohvaceni!", HttpStatus.OK, personJsonLd);
             }
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.MULTI_STATUS, null);

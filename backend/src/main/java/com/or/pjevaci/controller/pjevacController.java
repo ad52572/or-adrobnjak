@@ -1,7 +1,9 @@
 package com.or.pjevaci.controller;
 import com.or.pjevaci.entity.Pjevac;
+import com.or.pjevaci.responseHandler.ResponseHandler;
 import com.or.pjevaci.service.pjevaciService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,4 +25,5 @@ public class pjevacController {
     public ResponseEntity<List<Pjevac>> sviPjevaci(){
         return ResponseEntity.ok().body(pjevaciService.sviPjevaci());
     }
+
 }

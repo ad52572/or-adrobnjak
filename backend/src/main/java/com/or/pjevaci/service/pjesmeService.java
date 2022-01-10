@@ -2,6 +2,7 @@ package com.or.pjevaci.service;
 
 import com.or.pjevaci.DTO.pjesmeDTO;
 import com.or.pjevaci.entity.Pjesma;
+import com.or.pjevaci.entity.Pjevac;
 import com.or.pjevaci.repository.pjesmaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,10 @@ public class pjesmeService {
         };
         return retList;
     }
+
+    public Pjesma pjesmaByNaslov(String naslov) {
+        return pjesmaRepository.findPjesmaByNaslovEquals(naslov);
+    }
+
 
 }

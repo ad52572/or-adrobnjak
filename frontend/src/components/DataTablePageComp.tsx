@@ -9,7 +9,6 @@ import { Pjevaci } from "../api/index/types";
 
 export default function DataTablePageComp() {
   const [filter, setFilter] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [singers, setSingers] = useState<Pjevaci[]>([]);
   let data = [];
 
@@ -22,10 +21,6 @@ export default function DataTablePageComp() {
   }, []);
 
   for (let x of singers) {
-    let output = {
-      datum_rodenja: "",
-      trajanje: "",
-    };
     let nx = JSON.parse(JSON.stringify(x));
     if (nx.pjesma != undefined) {
       for (let y of nx.pjesma) {
@@ -46,7 +41,6 @@ export default function DataTablePageComp() {
 
         };
         data.push(output);
-        console.log(data);
       }
     }
   }

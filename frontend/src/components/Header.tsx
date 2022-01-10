@@ -8,6 +8,10 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { colors } from "../constants/colors";
 import SideDrawer from "./SideDrawer";
 import styled from "styled-components";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Button, IconButton } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
+import LoginIcon from "@mui/icons-material/Login";
 
 const useStyles = makeStyles((theme) => ({
   head: {
@@ -32,22 +36,30 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: "none",
     color: colors.white,
+    margin: "auto",
+    font: "caption",
   },
   linkSide: {
     textDecoration: "none",
     color: colors.black,
     width: "170px",
+    font: "caption",
   },
 }));
 
 const Header = () => {
+  const { isAuthenticated, logout, loginWithRedirect } = useAuth0();
   const classes = useStyles();
   const theme = useTheme();
   const isResp = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" style={{ background: colors.primary }}>
+      <AppBar
+        position="static"
+        sx={{ position: "absolute", top: "0", left: "0" }}
+        style={{ background: colors.primary }}
+      >
         <p className={classes.title}>Pjevaci - otvoreni podaci</p>
         <Toolbar className={classes.head}>
           <div>
@@ -61,6 +73,30 @@ const Header = () => {
                   {" "}
                   Datatable{" "}
                 </Link>
+                {isAuthenticated && (
+                  <Link to={"/profil"} className={classes.link}>
+                    {" "}
+                    Profil{" "}
+                  </Link>
+                )}
+                {isAuthenticated && (
+                  <Button
+                    sx={{ color: "white", fontSize: "0.9rem" }}
+                    onClick={() => logout({ returnTo: window.location.origin })}
+                  >
+                    Odjava
+                    <LogoutIcon sx={{ color: "white" }} />
+                  </Button>
+                )}
+                {!isAuthenticated && (
+                  <Button
+                    sx={{ color: "white", fontSize: "0.9rem" }}
+                    onClick={() => loginWithRedirect()}
+                  >
+                    Prijava
+                    <LoginIcon sx={{ color: "white" }} />
+                  </Button>
+                )}
               </div>
             ) : (
               <SideDrawer>
@@ -73,6 +109,32 @@ const Header = () => {
                     {" "}
                     Datatable{" "}
                   </Link>
+                  {isAuthenticated && (
+                    <Link to={"/profil"} className={classes.linkSide}>
+                      {" "}
+                      Profil{" "}
+                    </Link>
+                  )}
+                  {isAuthenticated && (
+                    <Button
+                      sx={{ color: "black", fontSize: "0.9rem" }}
+                      onClick={() =>
+                        logout({ returnTo: window.location.origin })
+                      }
+                    >
+                      Odjava
+                      <LogoutIcon />
+                    </Button>
+                  )}
+                  {!isAuthenticated && (
+                    <Button
+                      sx={{ color: "black", fontSize: "0.9rem" }}
+                      onClick={() => loginWithRedirect()}
+                    >
+                      Prijava
+                      <LoginIcon />
+                    </Button>
+                  )}
                 </SideDrawerContainer>
               </SideDrawer>
             )}
